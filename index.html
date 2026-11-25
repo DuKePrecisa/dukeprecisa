@@ -14,18 +14,49 @@
   <!-- Google AdSense: substitua ca-pub-0000000000000000 pelo seu ID real após aprovação -->
   <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script> -->
 
+  <script>
+    // Aplica o tema antes de renderizar a página para evitar piscada branca
+    (function() {
+      const saved = localStorage.getItem('dp_theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (saved === 'dark' || (!saved && prefersDark)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
   <style>
     :root {
       --bg: #f8fafc;
       --surface: #ffffff;
+      --surface-alt: #f1f5f9;
       --text: #0f172a;
+      --text-secondary: #334155;
       --muted: #475569;
       --border: #e2e8f0;
       --primary: #1d4ed8;
       --primary-dark: #1e3a8a;
       --accent: #10b981;
+      --pill-bg: #f1f5f9;
+      --pill-text: #334155;
       --radius: 16px;
       --shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0b1120;
+      --surface: #131c31;
+      --surface-alt: #1e293b;
+      --text: #f1f5f9;
+      --text-secondary: #cbd5e1;
+      --muted: #94a3b8;
+      --border: #24324d;
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --accent: #10b981;
+      --pill-bg: #1e293b;
+      --pill-text: #cbd5e1;
+      --shadow: 0 6px 24px -2px rgba(0, 0, 0, 0.45);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -34,6 +65,7 @@
       background-color: var(--bg);
       color: var(--text);
       line-height: 1.6;
+      transition: background-color 0.2s ease, color 0.2s ease;
     }
 
     a { text-decoration: none; color: inherit; }
@@ -57,6 +89,7 @@
       align-items: center;
       justify-content: space-between;
       height: 68px;
+      gap: 12px;
     }
     .brand {
       display: flex;
@@ -89,6 +122,11 @@
       top: 5px;
       right: 5px;
     }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
     .nav-links {
       display: flex;
       align-items: center;
@@ -106,6 +144,24 @@
       transition: background 0.15s ease;
     }
     .nav-store-btn:hover { background: #6d28d9; }
+
+    .theme-toggle {
+      background: rgba(255, 255, 255, 0.1);
+      color: #f8fafc;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 10px;
+      padding: 7px 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s ease;
+    }
+    .theme-toggle:hover {
+      background: rgba(255, 255, 255, 0.18);
+    }
 
     /* Hero */
     .hero {
@@ -149,18 +205,18 @@
       font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: #94a3b8;
+      color: var(--muted);
       margin-bottom: 4px;
     }
     .ad-box {
       min-height: 90px;
-      background: #f1f5f9;
-      border: 1px dashed #cbd5e1;
+      background: var(--surface-alt);
+      border: 1px dashed var(--border);
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #64748b;
+      color: var(--muted);
       font-size: 0.85rem;
       padding: 12px;
     }
@@ -191,12 +247,11 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background-color 0.2s ease;
     }
     .card:hover {
       transform: translateY(-4px);
-      border-color: #93c5fd;
-      box-shadow: 0 12px 28px -4px rgba(15, 23, 42, 0.1);
+      border-color: #3b82f6;
     }
     .card-header {
       display: flex;
@@ -218,13 +273,19 @@
     .icon-invest { background: #fef3c7; color: #b45309; }
     .icon-farma { background: #ecfdf5; color: #047857; }
     .icon-store { background: #f3e8ff; color: #6d28d9; }
+
+    [data-theme="dark"] .icon-calc { background: rgba(59, 130, 246, 0.16); color: #60a5fa; }
+    [data-theme="dark"] .icon-invest { background: rgba(245, 158, 11, 0.16); color: #fbbf24; }
+    [data-theme="dark"] .icon-farma { background: rgba(16, 185, 129, 0.16); color: #34d399; }
+    [data-theme="dark"] .icon-store { background: rgba(139, 92, 246, 0.18); color: #c4b5fd; }
+
     .pill {
       font-size: 0.74rem;
       font-weight: 600;
       padding: 4px 10px;
       border-radius: 999px;
-      background: #f1f5f9;
-      color: #334155;
+      background: var(--pill-bg);
+      color: var(--pill-text);
     }
     .card h2 {
       font-size: 1.22rem;
@@ -239,7 +300,7 @@
       list-style: none;
       margin-bottom: 20px;
       font-size: 0.86rem;
-      color: #334155;
+      color: var(--text-secondary);
     }
     .card-features li {
       padding: 4px 0;
@@ -274,7 +335,7 @@
     .btn-purple { background: #7c3aed; }
     .btn-purple:hover { background: #6d28d9; }
 
-    /* Conteúdo Editorial (Essencial para SEO e AdSense) */
+    /* Conteúdo Editorial */
     .editorial {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -305,10 +366,11 @@
 
     /* Footer */
     footer {
-      background: #0f172a;
+      background: #090e1a;
       color: #94a3b8;
       padding: 40px 0 28px;
       font-size: 0.88rem;
+      border-top: 1px solid #1e293b;
     }
     .footer-top {
       display: flex;
@@ -341,7 +403,7 @@
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(15, 23, 42, 0.7);
+      background: rgba(15, 23, 42, 0.75);
       display: none;
       align-items: center;
       justify-content: center;
@@ -350,15 +412,16 @@
     }
     .modal-backdrop.open { display: flex; }
     .modal-card {
-      background: #fff;
+      background: var(--surface);
       color: var(--text);
+      border: 1px solid var(--border);
       max-width: 680px;
       width: 100%;
       max-height: 85vh;
       overflow-y: auto;
       border-radius: 16px;
       padding: 28px;
-      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.35);
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.45);
     }
     .modal-head {
       display: flex;
@@ -369,8 +432,9 @@
       margin-bottom: 16px;
     }
     .modal-close {
-      background: #f1f5f9;
-      border: none;
+      background: var(--surface-alt);
+      color: var(--text);
+      border: 1px solid var(--border);
       width: 34px;
       height: 34px;
       border-radius: 8px;
@@ -413,7 +477,7 @@
       white-space: nowrap;
     }
 
-    @media (max-width: 780px) {
+    @media (max-width: 820px) {
       .nav-links { display: none; }
       .hero { padding: 40px 0 48px; }
     }
@@ -427,12 +491,18 @@
         <span class="brand-badge">D</span>
         <span>DuKêPrecisa</span>
       </a>
-      <nav class="nav-links" aria-label="Menu principal">
-        <a href="https://calculatudobox.dukeprecisa.com.br">CalculaTudoBox</a>
-        <a href="https://invescalc.dukeprecisa.com.br">InvesCalc</a>
-        <a href="https://buscafarma.dukeprecisa.com.br">BuscaFarma</a>
-        <a href="https://sites.google.com/view/dukeprecisa" target="_blank" rel="noopener" class="nav-store-btn">🛍️ Loja Parceira</a>
-      </nav>
+      <div class="nav-right">
+        <nav class="nav-links" aria-label="Menu principal">
+          <a href="https://calculatudobox.dukeprecisa.com.br">CalculaTudoBox</a>
+          <a href="https://invescalc.dukeprecisa.com.br">InvesCalc</a>
+          <a href="https://buscafarma.dukeprecisa.com.br">BuscaFarma</a>
+          <a href="https://sites.google.com/view/dukeprecisa" target="_blank" rel="noopener" class="nav-store-btn">🛍️ Loja Parceira</a>
+        </nav>
+        <button type="button" id="themeToggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar modo claro e escuro">
+          <span id="themeIcon">🌙</span>
+          <span id="themeLabel">Escuro</span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -599,6 +669,26 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    function syncThemeButton() {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.getElementById('themeIcon').textContent = isDark ? '☀️' : '🌙';
+      document.getElementById('themeLabel').textContent = isDark ? 'Claro' : 'Escuro';
+    }
+
+    function toggleTheme() {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('dp_theme', 'light');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('dp_theme', 'dark');
+      }
+      syncThemeButton();
+    }
+
+    syncThemeButton();
+
     const legalDocs = {
       privacidade: {
         title: 'Política de Privacidade — DuKêPrecisa',
@@ -608,7 +698,7 @@
           <p>O portal <strong>DuKêPrecisa</strong> (dukeprecisa.com.br) e seus subdomínios (CalculaTudoBox, InvesCalc e BuscaFarma) respeitam a privacidade dos visitantes em conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018). Não exigimos cadastro nem coletamos dados pessoais sensíveis para o uso das calculadoras.</p>
           <h4>2. Cookies e Publicidade (Google AdSense)</h4>
           <p>Utilizamos fornecedores de publicidade terceirizados, incluindo o Google, que empregam cookies (como o cookie DART) para exibir anúncios com base nas visitas anteriores do usuário a este e a outros sites na internet.</p>
-          <p>Você pode desativar a publicidade personalizada acessando as <a href="https://adssettings.google.com" target="_blank" rel="noopener" style="color:#1d4ed8;text-decoration:underline;">Configurações de Anúncios do Google</a>.</p>
+          <p>Você pode desativar a publicidade personalizada acessando as <a href="https://adssettings.google.com" target="_blank" rel="noopener" style="color:#3b82f6;text-decoration:underline;">Configurações de Anúncios do Google</a>.</p>
           <h4>3. Links Externos e Afiliados</h4>
           <p>Ao clicar em ofertas na Loja Parceira DuKêPrecisa ou no comparador BuscaFarma, você será redirecionado ao site oficial do lojista ou plataforma parceira, que possui sua própria política de privacidade.</p>
         `
