@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DukePrecisa — Ferramentas Online, Calculadoras e Comparador de Preços</title>
-  <meta name="description" content="Hub oficial do DukePrecisa: acesse gratuitamente o CalculaTudoBox, o simulador financeiro InvesCalc e o comparador de preços de medicamentos BuscaFarma." />
+  <title>DuKêPrecisa — Ferramentas Online, Calculadoras e Comparador de Preços</title>
+  <meta name="description" content="Portal oficial DuKêPrecisa: acesse gratuitamente o CalculaTudoBox, o simulador financeiro InvesCalc, o comparador BuscaFarma e nossa Loja Parceira." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://dukeprecisa.com.br/" />
 
-  <!-- Favicon SVG Embutido (Identidade DukePrecisa) -->
+  <!-- Favicon SVG Embutido (Identidade DuKêPrecisa) -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%230f172a'/%3E%3Cstop offset='100%25' stop-color='%231d4ed8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpath d='M18 18h13c9.5 0 16 5.8 16 14s-6.5 14-16 14H18V18zm7 6.5v15h5.8c5.6 0 9.2-3 9.2-7.5s-3.6-7.5-9.2-7.5H25z' fill='%23ffffff'/%3E%3Ccircle cx='48' cy='18' r='5' fill='%2310b981'/%3E%3C/svg%3E" />
 
   <!-- Google AdSense: substitua ca-pub-0000000000000000 pelo seu ID real após aprovação -->
@@ -48,7 +48,7 @@
       z-index: 40;
     }
     .container {
-      max-width: 1120px;
+      max-width: 1160px;
       margin: 0 auto;
       padding: 0 20px;
     }
@@ -63,7 +63,7 @@
       align-items: center;
       gap: 12px;
       font-weight: 800;
-      font-size: 1.25rem;
+      font-size: 1.28rem;
       letter-spacing: -0.02em;
     }
     .brand-badge {
@@ -91,11 +91,21 @@
     }
     .nav-links {
       display: flex;
-      gap: 20px;
-      font-size: 0.92rem;
+      align-items: center;
+      gap: 18px;
+      font-size: 0.9rem;
       color: #cbd5e1;
     }
     .nav-links a:hover { color: #fff; }
+    .nav-store-btn {
+      background: #7c3aed;
+      color: #fff !important;
+      padding: 6px 13px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.15s ease;
+    }
+    .nav-store-btn:hover { background: #6d28d9; }
 
     /* Hero */
     .hero {
@@ -119,13 +129,13 @@
       font-size: clamp(1.85rem, 4vw, 2.75rem);
       font-weight: 800;
       letter-spacing: -0.03em;
-      max-width: 760px;
+      max-width: 780px;
       margin: 0 auto 16px;
       line-height: 1.18;
     }
     .hero p {
       color: #cbd5e1;
-      max-width: 640px;
+      max-width: 650px;
       margin: 0 auto;
       font-size: 1.05rem;
     }
@@ -168,15 +178,15 @@
     }
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
       margin-bottom: 44px;
     }
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 26px;
+      padding: 24px;
       box-shadow: var(--shadow);
       display: flex;
       flex-direction: column;
@@ -207,8 +217,9 @@
     .icon-calc { background: #eff6ff; color: #1d4ed8; }
     .icon-invest { background: #fef3c7; color: #b45309; }
     .icon-farma { background: #ecfdf5; color: #047857; }
+    .icon-store { background: #f3e8ff; color: #6d28d9; }
     .pill {
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 600;
       padding: 4px 10px;
       border-radius: 999px;
@@ -216,18 +227,18 @@
       color: #334155;
     }
     .card h2 {
-      font-size: 1.25rem;
+      font-size: 1.22rem;
       margin-bottom: 8px;
     }
     .card p {
       color: var(--muted);
-      font-size: 0.94rem;
-      margin-bottom: 20px;
+      font-size: 0.92rem;
+      margin-bottom: 18px;
     }
     .card-features {
       list-style: none;
-      margin-bottom: 22px;
-      font-size: 0.88rem;
+      margin-bottom: 20px;
+      font-size: 0.86rem;
       color: #334155;
     }
     .card-features li {
@@ -247,10 +258,10 @@
       justify-content: center;
       gap: 8px;
       width: 100%;
-      padding: 12px 18px;
+      padding: 12px 16px;
       border-radius: 10px;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.93rem;
       background: var(--primary);
       color: #fff;
       transition: background 0.15s ease;
@@ -260,6 +271,8 @@
     .btn-emerald:hover { background: #047857; }
     .btn-amber { background: #d97706; }
     .btn-amber:hover { background: #b45309; }
+    .btn-purple { background: #7c3aed; }
+    .btn-purple:hover { background: #6d28d9; }
 
     /* Conteúdo Editorial (Essencial para SEO e AdSense) */
     .editorial {
@@ -311,7 +324,7 @@
       flex-wrap: wrap;
       gap: 18px;
     }
-    .footer-links button {
+    .footer-links button, .footer-links a {
       background: none;
       border: none;
       color: #cbd5e1;
@@ -319,7 +332,7 @@
       font-size: 0.88rem;
       padding: 0;
     }
-    .footer-links button:hover {
+    .footer-links button:hover, .footer-links a:hover {
       color: #fff;
       text-decoration: underline;
     }
@@ -385,8 +398,8 @@
       justify-content: space-between;
       gap: 16px;
       z-index: 50;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
       font-size: 0.88rem;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
     }
     .cookie-bar.show { display: flex; flex-wrap: wrap; }
     .cookie-btn {
@@ -400,7 +413,7 @@
       white-space: nowrap;
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 780px) {
       .nav-links { display: none; }
       .hero { padding: 40px 0 48px; }
     }
@@ -412,13 +425,13 @@
     <div class="container nav">
       <a href="/" class="brand">
         <span class="brand-badge">D</span>
-        <span>DukePrecisa</span>
+        <span>DuKêPrecisa</span>
       </a>
       <nav class="nav-links" aria-label="Menu principal">
         <a href="https://calculatudobox.dukeprecisa.com.br">CalculaTudoBox</a>
         <a href="https://invescalc.dukeprecisa.com.br">InvesCalc</a>
         <a href="https://buscafarma.dukeprecisa.com.br">BuscaFarma</a>
-        <a href="#sobre">Sobre o Portal</a>
+        <a href="https://sites.google.com/view/dukeprecisa" target="_blank" rel="noopener" class="nav-store-btn">🛍️ Loja Parceira</a>
       </nav>
     </div>
   </header>
@@ -427,7 +440,7 @@
     <div class="container">
       <span class="hero-tag">Utilitários Online Gratuitos • Sem Cadastro</span>
       <h1>Calculadoras, Simuladores e Comparadores para o seu Dia a Dia</h1>
-      <p>Acesse ferramentas rápidas e gratuitas desenvolvidas para ajudar você a fazer contas do cotidiano, simular investimentos e economizar na compra de medicamentos.</p>
+      <p>Acesse ferramentas rápidas e gratuitas do <strong>DuKêPrecisa</strong> para fazer contas do cotidiano, simular investimentos, economizar na compra de medicamentos e conferir ofertas na nossa loja parceira.</p>
     </div>
   </section>
 
@@ -441,8 +454,8 @@
       </div>
     </div>
 
-    <h2 class="section-title">Nossas Plataformas</h2>
-    <p class="section-sub">Escolha uma das ferramentas abaixo para abrir diretamente no navegador ou instalar no celular.</p>
+    <h2 class="section-title">Nossas Plataformas e Loja Parceira</h2>
+    <p class="section-sub">Escolha uma das ferramentas ou acesse nossa vitrine de ofertas e cursos selecionados.</p>
 
     <div class="cards-grid">
       <!-- Card 1: CalculaTudoBox -->
@@ -498,6 +511,24 @@
         </div>
         <a href="https://buscafarma.dukeprecisa.com.br" class="btn btn-emerald">Acessar BuscaFarma →</a>
       </article>
+
+      <!-- Card 4: Loja Parceira DuKêPrecisa -->
+      <article class="card">
+        <div>
+          <div class="card-header">
+            <div class="card-icon icon-store">🛍️</div>
+            <span class="pill">Vitrine Oficial</span>
+          </div>
+          <h2>Loja Parceira DuKêPrecisa</h2>
+          <p>Seleção especial de produtos recomendados, utilidades, eletrônicos e cursos online com links diretos para lojas oficiais.</p>
+          <ul class="card-features">
+            <li>Curadoria de produtos e ofertas</li>
+            <li>Cursos online e treinamentos</li>
+            <li>Compra segura nos sites parceiros</li>
+          </ul>
+        </div>
+        <a href="https://sites.google.com/view/dukeprecisa" target="_blank" rel="noopener" class="btn btn-purple">Visitar Loja Parceira ↗</a>
+      </article>
     </div>
 
     <!-- Espaço AdSense Inferior -->
@@ -511,8 +542,8 @@
 
     <!-- Seção Editorial para Indexação e Qualidade AdSense -->
     <section id="sobre" class="editorial">
-      <h3>Sobre o Portal DukePrecisa</h3>
-      <p>O <strong>DukePrecisa</strong> reúne aplicativos web utilitários criados com foco em velocidade, simplicidade e acesso direto pelo navegador, sem exigir instalação pesada ou criação de contas.</p>
+      <h3>Sobre o Portal DuKêPrecisa</h3>
+      <p>O <strong>DuKêPrecisa</strong> reúne aplicativos web utilitários criados com foco em velocidade, simplicidade e acesso direto pelo navegador, sem exigir instalação pesada ou criação de contas, além de uma vitrine com recomendações de produtos e cursos.</p>
       <div class="editorial-grid">
         <div class="editorial-item">
           <h4>Acesso Multiplataforma</h4>
@@ -534,16 +565,17 @@
     <div class="container">
       <div class="footer-top">
         <div>
-          <strong style="color:#fff; font-size:1.05rem;">DukePrecisa</strong>
-          <p style="margin-top:4px; max-width:420px;">Hub de calculadoras online, simulações financeiras e comparação de preços em farmácias.</p>
+          <strong style="color:#fff; font-size:1.05rem;">DuKêPrecisa</strong>
+          <p style="margin-top:4px; max-width:440px;">Hub de calculadoras online, simulações financeiras, comparação de preços em farmácias e loja parceira.</p>
         </div>
         <div class="footer-links">
+          <a href="https://sites.google.com/view/dukeprecisa" target="_blank" rel="noopener">Loja Parceira</a>
           <button type="button" onclick="openModal('privacidade')">Política de Privacidade</button>
           <button type="button" onclick="openModal('termos')">Termos de Uso</button>
           <button type="button" onclick="openModal('contato')">Contato</button>
         </div>
       </div>
-      <p>© <span id="year"></span> DukePrecisa (dukeprecisa.com.br). Todos os direitos reservados.</p>
+      <p>© <span id="year"></span> DuKêPrecisa (dukeprecisa.com.br). Todos os direitos reservados.</p>
     </div>
   </footer>
 
@@ -569,16 +601,16 @@
 
     const legalDocs = {
       privacidade: {
-        title: 'Política de Privacidade — DukePrecisa',
+        title: 'Política de Privacidade — DuKêPrecisa',
         html: `
           <p><strong>Última atualização:</strong> Novembro de 2026</p>
           <h4>1. Coleta e Uso de Informações</h4>
-          <p>O portal <strong>DukePrecisa</strong> (dukeprecisa.com.br) e seus subdomínios (CalculaTudoBox, InvesCalc e BuscaFarma) respeitam a privacidade dos visitantes em conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018). Não exigimos cadastro nem coletamos dados pessoais sensíveis para o uso das calculadoras.</p>
+          <p>O portal <strong>DuKêPrecisa</strong> (dukeprecisa.com.br) e seus subdomínios (CalculaTudoBox, InvesCalc e BuscaFarma) respeitam a privacidade dos visitantes em conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018). Não exigimos cadastro nem coletamos dados pessoais sensíveis para o uso das calculadoras.</p>
           <h4>2. Cookies e Publicidade (Google AdSense)</h4>
           <p>Utilizamos fornecedores de publicidade terceirizados, incluindo o Google, que empregam cookies (como o cookie DART) para exibir anúncios com base nas visitas anteriores do usuário a este e a outros sites na internet.</p>
           <p>Você pode desativar a publicidade personalizada acessando as <a href="https://adssettings.google.com" target="_blank" rel="noopener" style="color:#1d4ed8;text-decoration:underline;">Configurações de Anúncios do Google</a>.</p>
           <h4>3. Links Externos e Afiliados</h4>
-          <p>Ao clicar em ofertas no comparador BuscaFarma ou links de parceiros, você será redirecionado ao site oficial da loja varejista, que possui sua própria política de privacidade.</p>
+          <p>Ao clicar em ofertas na Loja Parceira DuKêPrecisa ou no comparador BuscaFarma, você será redirecionado ao site oficial do lojista ou plataforma parceira, que possui sua própria política de privacidade.</p>
         `
       },
       termos: {
@@ -593,9 +625,9 @@
         `
       },
       contato: {
-        title: 'Contato — DukePrecisa',
+        title: 'Contato — DuKêPrecisa',
         html: `
-          <p>Para dúvidas técnicas, sugestões de novas calculadoras, correção de informações ou assuntos comerciais relacionados ao portal <strong>dukeprecisa.com.br</strong>, entre em contato pelo e-mail oficial:</p>
+          <p>Para dúvidas técnicas, sugestões de novas calculadoras, correção de informações ou assuntos comerciais relacionados ao portal <strong>DuKêPrecisa</strong> (dukeprecisa.com.br), entre em contato pelo e-mail oficial:</p>
           <p><strong>E-mail:</strong> contato@dukeprecisa.com.br</p>
           <p>Respondemos às solicitações em dias úteis.</p>
         `
