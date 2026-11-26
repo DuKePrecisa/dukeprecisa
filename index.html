@@ -12,7 +12,12 @@
 
  <!-- Favicon SVG Oficial DuKêPrecisa (Fiel ao Logotipo) -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23232c33'/%3E%3Cstop offset='100%25' stop-color='%2312181d'/%3E%3C/linearGradient%3E%3ClinearGradient id='metal' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0%25' stop-color='%23e2e8f0'/%3E%3Cstop offset='50%25' stop-color='%23b8c0c8'/%3E%3Cstop offset='100%25' stop-color='%238d96a0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23bg)'/%3E%3Cg transform='translate(41,17)' fill='%2368a357'%3E%3Ccircle r='11'/%3E%3Crect x='-2.2' y='-14.5' width='4.4' height='5' rx='1'/%3E%3Crect x='-2.2' y='9.5' width='4.4' height='5' rx='1'/%3E%3Crect x='-14.5' y='-2.2' width='5' height='4.4' rx='1'/%3E%3Crect x='9.5' y='-2.2' width='5' height='4.4' rx='1'/%3E%3Crect x='-2.2' y='-14.5' width='4.4' height='5' rx='1' transform='rotate(45)'/%3E%3Crect x='-2.2' y='9.5' width='4.4' height='5' rx='1' transform='rotate(45)'/%3E%3Crect x='-14.5' y='-2.2' width='5' height='4.4' rx='1' transform='rotate(45)'/%3E%3Crect x='9.5' y='-2.2' width='5' height='4.4' rx='1' transform='rotate(45)'/%3E%3Ccircle r='5.5' fill='%231b2329'/%3E%3C/g%3E%3Cpath d='M10 13a4.5 4.5 0 0 1 9 0v3h-2.5v-3a2 2 0 0 0-4 0v3H10v-3z' fill='%234ea3e3'/%3E%3Crect x='6' y='15' width='17' height='21' rx='3' fill='%232374b5' stroke='%2312181d' stroke-width='1.5'/%3E%3Cpath d='M45 34h5l5-5M45 41h6l5-4M45 48h5l4 3' stroke='%23eab308' stroke-width='2.4' stroke-linecap='round' fill='none'/%3E%3Ccircle cx='56' cy='28' r='2.6' fill='%23dc2626'/%3E%3Ccircle cx='57' cy='36.5' r='2.6' fill='%23dc2626'/%3E%3Ccircle cx='55' cy='51.5' r='2.6' fill='%23eab308'/%3E%3Ctext x='30' y='45' text-anchor='middle' font-family='Arial Black, Impact, sans-serif' font-weight='900' font-style='italic' font-size='26' fill='url(%23metal)' stroke='%2312181d' stroke-width='3' paint-order='stroke'%3EDK%3C/text%3E%3C/svg%3E" />
-
+     <meta name="theme-color" content="#0f172a" />
+     <meta name="apple-mobile-web-app-capable" content="yes" />
+     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+     <meta name="apple-mobile-web-app-title" content="DuKêPrecisa" />
+     <link id="apple-touch-icon" rel="apple-touch-icon" href="" />
+     <link id="pwa-manifest" rel="manifest" href="" />
   <!-- Google AdSense: substitua ca-pub-0000000000000000 pelo seu ID real após aprovação -->
   <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script> -->
 
@@ -537,6 +542,9 @@
           <span id="themeIcon">🌙</span>
           <span id="themeLabel">Escuro</span>
         </button>
+        <button type="button" onclick="triggerPwaInstall()" style="background:#10b981; color:#fff; border:1px solid #34d399; border-radius:10px; padding:7px 12px; font-size:0.85rem; font-weight:600; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">
+         📲 Instalar App
+        </button>
       </div>
     </div>
   </header>
@@ -783,6 +791,55 @@
       localStorage.setItem('dp_lgpd_ok', '1');
       document.getElementById('cookieBar').classList.remove('show');
     }
+    function generateDpIcon(size) {
+  const c = document.createElement('canvas');
+  c.width = size; c.height = size;
+  const ctx = c.getContext('2d');
+  ctx.fillStyle = '#182026';
+  ctx.fillRect(0, 0, size, size);
+  ctx.fillStyle = '#2374b5';
+  ctx.fillRect(size * 0.12, size * 0.22, size * 0.24, size * 0.30);
+  ctx.fillStyle = '#68a357';
+  ctx.beginPath(); ctx.arc(size * 0.68, size * 0.26, size * 0.15, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#e2e8f0';
+  ctx.font = `900 italic ${Math.round(size * 0.42)}px Arial, sans-serif`;
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText('DK', size * 0.48, size * 0.56);
+  return c.toDataURL('image/png');
+}
+
+(function initPwaDp() {
+  document.getElementById('apple-touch-icon').href = generateDpIcon(180);
+  const manifest = {
+    name: "DuKêPrecisa — Ferramentas e Calculadoras",
+    short_name: "DuKêPrecisa",
+    start_url: "/",
+    display: "standalone",
+    background_color: "#0f172a",
+    theme_color: "#0f172a",
+    icons: [
+      { src: generateDpIcon(192), sizes: "192x192", type: "image/png", purpose: "any maskable" },
+      { src: generateDpIcon(512), sizes: "512x512", type: "image/png", purpose: "any maskable" }
+    ]
+  };
+  document.getElementById('pwa-manifest').href = URL.createObjectURL(new Blob([JSON.stringify(manifest)], { type: 'application/json' }));
+  if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+    const sw = `self.addEventListener('install',e=>self.skipWaiting());self.addEventListener('fetch',e=>e.respondWith(fetch(e.request).catch(()=>caches.match(e.request))));`;
+    navigator.serviceWorker.register(URL.createObjectURL(new Blob([sw], { type: 'application/javascript' }))).catch(() => {});
+  }
+})();
+
+let deferredPwaPrompt = null;
+window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferredPwaPrompt = e; });
+
+function triggerPwaInstall() {
+  if (deferredPwaPrompt) {
+    deferredPwaPrompt.prompt();
+    deferredPwaPrompt.userChoice.finally(() => { deferredPwaPrompt = null; });
+  } else {
+    alert('Para instalar no celular:\n\n• Android (Chrome): Toque nos 3 pontinhos no canto superior e selecione "Instalar aplicativo" ou "Adicionar à tela inicial".\n• iPhone (Safari): Toque em Compartilhar e escolha "Adicionar à Tela de Início".');
+  }
+}
   </script>
 </body>
 </html>
